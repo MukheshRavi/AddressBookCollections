@@ -17,7 +17,7 @@ namespace AddressBookMain
             do
             {
                 Console.WriteLine("\n1: Enter contact details  \n2: Edit contact details \n3.Delete a contact  \n4.Display Contanct \n5.Get Contact using " +
-                    "city name or state name  \n6.Display City and State Lists  \n7.Display City or state count");
+                    "city name or state name ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -40,6 +40,10 @@ namespace AddressBookMain
                     ///To display a contact
                     case 4:
                         c.DisplayAddressBook();
+                        break;
+                    ///To get contact Details By city or state name
+                    case 5:
+                        c.GetPersonFromCityOrState();
                         break;
                     default:
                         Console.WriteLine("Invalid option");

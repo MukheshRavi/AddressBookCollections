@@ -233,5 +233,28 @@ namespace AddressBookMain
                 }
             }
         }
+        /// <summary>
+        /// To Check for a contact with specified city or state
+        /// </summary>
+        public void GetPersonFromCityOrState()
+        {
+            ///To check if there is any contact added in list
+            if (addressBook.Count == 0)
+                Console.WriteLine("There is no contact added");
+            else
+            {
+                ///checks for contact with specified city or state
+                Console.WriteLine("\nEnter the city or state name to find the person");
+                string value = Console.ReadLine();
+                foreach (KeyValuePair<Contacts, string> a in addressBook)
+                {
+                    if (a.Key.city == value || a.Key.state == value)
+                        Console.WriteLine("Name of AddressBook: firstname, lastname, address, city, state, email, zip, phoneNumber");
+                    Console.WriteLine(a.Value + ":" + a.Key.frstName + "," + a.Key.lastName + "," + a.Key.address + "," + a.Key.city + ","
+                        + a.Key.state + "," + a.Key.email + "," + a.Key.zip + "," + a.Key.phnNo);
+
+                }
+            }
+        }
     }
 }
