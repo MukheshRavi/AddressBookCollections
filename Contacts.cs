@@ -20,7 +20,9 @@ namespace AddressBookMain
         public string phnNo;
         public List<Contacts> contactsList = new List<Contacts>();
         public Dictionary<Contacts, string> addressBook = new Dictionary<Contacts, string>();
-       
+        public Dictionary<Contacts, string> cityList = new Dictionary<Contacts, string>();
+        public Dictionary<Contacts, string> stateList = new Dictionary<Contacts, string>();
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -144,7 +146,8 @@ namespace AddressBookMain
                 ///Adding into List and Dictionary
                 contactsList.Add(contacts);
                 addressBook.Add(contacts, name);
-               
+                cityList.Add(contacts, city);
+                stateList.Add(contacts, state);
                 Console.WriteLine("New contact added");
                 Console.WriteLine("Firstname:" + contacts.frstName + "\nLastname:" + contacts.lastName + "\naddress:" + contacts.address +
                     "\ncity:" + contacts.city + "\nstate:" + contacts.state + "\nzip" + contacts.zip + "\nPhone Number:" + contacts.phnNo);
@@ -165,7 +168,8 @@ namespace AddressBookMain
 
                             contactsList.Add(contacts);
                             addressBook.Add(contacts, name);
-                           
+                            cityList.Add(contacts, city);
+                            stateList.Add(contacts, state);
                             Console.WriteLine("New contact added");
                             Console.WriteLine("Firstname:" + contacts.frstName + "\nLastname:" + contacts.lastName + "\naddress:" + contacts.address +
                              "\ncity:" + contacts.city + "\nstate:" + contacts.state + "\nzip" + contacts.zip + "\nPhone Number:" + contacts.phnNo);
@@ -186,7 +190,8 @@ namespace AddressBookMain
                         ///Adding in to List and Dictionary
                         contactsList.Add(contacts);
                         addressBook.Add(contacts, name);
-                       
+                        cityList.Add(contacts, city);
+                        stateList.Add(contacts, state);
                         Console.WriteLine("New contact added");
                         Console.WriteLine("Firstname:" + contacts.frstName + "\nLastname:" + contacts.lastName + "\naddress:" + contacts.address +
                             "\ncity:" + contacts.city + "\nstate:" + contacts.state + "\nzip" + contacts.zip + "\nPhone Number:" + contacts.phnNo);
@@ -252,6 +257,31 @@ namespace AddressBookMain
                         Console.WriteLine("Name of AddressBook: firstname, lastname, address, city, state, email, zip, phoneNumber");
                     Console.WriteLine(a.Value + ":" + a.Key.frstName + "," + a.Key.lastName + "," + a.Key.address + "," + a.Key.city + ","
                         + a.Key.state + "," + a.Key.email + "," + a.Key.zip + "," + a.Key.phnNo);
+
+                }
+            }
+        }
+        public void DisplayCityAndStateList()
+        {
+            ///To check if there is any contact added in list
+            if (addressBook.Count == 0)
+                Console.WriteLine("There is no contact added");
+            ///if contacts are present then displays both lists
+            else
+            {
+                foreach (KeyValuePair<Contacts, string> keyValuePair in cityList)
+                {
+                    Console.WriteLine("The contacts with " + keyValuePair.Value + " city are :");
+                    Console.WriteLine("First Name: " + keyValuePair.Key.frstName + " Last Name: " + keyValuePair.Key.lastName +
+                            " Address: " + keyValuePair.Key.address + " city: " + keyValuePair.Key.city + " state: " + keyValuePair.Key.state
+                             + " Email:" + keyValuePair.Key.email + "Zip: " + keyValuePair.Key.zip + "Phone Nmuber: " + keyValuePair.Key.phnNo);
+                }
+                foreach (KeyValuePair<Contacts, string> keyValuePair in stateList)
+                {
+                    Console.WriteLine("The contacts with " + keyValuePair.Value + " state are :");
+                    Console.WriteLine("First Name: " + keyValuePair.Key.frstName + " Last Name: " + keyValuePair.Key.lastName +
+                            " Address: " + keyValuePair.Key.address + " city: " + keyValuePair.Key.city + " state: " + keyValuePair.Key.state
+                             + " Email:" + keyValuePair.Key.email + "Zip: " + keyValuePair.Key.zip + "Phone Nmuber: " + keyValuePair.Key.phnNo);
 
                 }
             }
