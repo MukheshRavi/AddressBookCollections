@@ -261,6 +261,9 @@ namespace AddressBookMain
                 }
             }
         }
+        /// <summary>
+        /// Displays State and City lists 
+        /// </summary>
         public void DisplayCityAndStateList()
         {
             ///To check if there is any contact added in list
@@ -285,6 +288,36 @@ namespace AddressBookMain
 
                 }
             }
+        }
+        /// <summary>
+        /// Displays count of contacts for a specific city or state
+        /// </summary>
+        public void CountForCityAndState()
+        {
+            ///To check if there is any contact added in list
+            if (addressBook.Count == 0)
+                Console.WriteLine("There is no contact added");
+
+            ///Take the input from user 
+            Console.WriteLine("Enter the name of city or state to get Count");
+            string name = Console.ReadLine();
+            int count = 0;
+            foreach (KeyValuePair<Contacts, string> keyValuePair in cityList)
+            {
+                ///checks for entered city name
+                if (keyValuePair.Value == name)
+                    count++;
+            }
+
+            foreach (KeyValuePair<Contacts, string> keyValuePair in stateList)
+            {
+                ///checks for entered state name
+                if (keyValuePair.Value == name)
+                    count++;
+            }
+            ///Displays count of city or state
+            Console.WriteLine("The count for entered city or state name " + name + "is:" + count);
+
         }
     }
 }
